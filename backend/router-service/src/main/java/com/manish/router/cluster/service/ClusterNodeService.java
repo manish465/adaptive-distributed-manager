@@ -18,6 +18,8 @@ public class ClusterNodeService {
     private final ClusterNodeRepository repository;
 
     public NodeResponse create(CreateNodeRequest request) {
+        Instant now = Instant.now();
+
         ClusterNode node = ClusterNode.builder()
                 .id(UUID.randomUUID())
                 .hostname(request.hostname())
@@ -27,8 +29,10 @@ public class ClusterNodeService {
                 .cpuCores(request.cpuCores())
                 .memoryMb(request.memoryMb())
                 .status(NodeStatus.ONLINE)
-                .createdAt(Instant.now())
-                .updatedAt(Instant.now())
+                .lastHeartbeat(now)
+                .heartbeatTimeoutSeconds(30)
+                .createdAt(now)
+                .updatedAt(now)
                 .build();
 
         repository.save(node);
@@ -41,6 +45,16 @@ public class ClusterNodeService {
                 .stream()
                 .map(this::map)
                 .toList();
+    }
+
+    public void updateHeartbeat(UUID nodeId) {
+
+        ClusterNode node = repository.findById(nodeId)
+                .orElseThrow();
+
+        node.setLastHeartbeat(Instant.now());
+
+        repository.save(node);
     }
 
     private NodeResponse map(ClusterNode node) {

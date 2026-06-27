@@ -1,4 +1,5 @@
 import type { ClusterNode } from "../../types/node";
+import EmptyState from "../common/EmptyState";
 import StatusBadge from "../common/StatusBadge";
 
 interface Props {
@@ -6,6 +7,15 @@ interface Props {
 }
 
 export default function NodeTable({ nodes }: Props) {
+    if (nodes.length === 0) {
+        return (
+            <EmptyState
+                title="No cluster nodes"
+                description="Register a node to begin building the cluster."
+            />
+        );
+    }
+
     return (
         <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
             <table className="w-full">

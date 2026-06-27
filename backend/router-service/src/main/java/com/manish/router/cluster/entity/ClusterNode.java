@@ -32,6 +32,10 @@ public class ClusterNode {
     @Enumerated(EnumType.STRING)
     private NodeStatus status;
 
+    private Instant lastHeartbeat;
+
+    private Integer heartbeatTimeoutSeconds;
+
     private Instant createdAt;
 
     private Instant updatedAt;
