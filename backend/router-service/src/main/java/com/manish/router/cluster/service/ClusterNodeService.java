@@ -28,6 +28,8 @@ public class ClusterNodeService {
                 .zone(request.zone())
                 .cpuCores(request.cpuCores())
                 .memoryMb(request.memoryMb())
+                .availableCpuCores(request.cpuCores())
+                .availableMemoryMb(request.memoryMb())
                 .status(NodeStatus.ONLINE)
                 .lastHeartbeat(now)
                 .heartbeatTimeoutSeconds(30)
@@ -66,6 +68,8 @@ public class ClusterNodeService {
                 node.getZone(),
                 node.getCpuCores(),
                 node.getMemoryMb(),
+                node.getAvailableCpuCores(),
+                node.getAvailableMemoryMb(),
                 node.getStatus()
         );
     }

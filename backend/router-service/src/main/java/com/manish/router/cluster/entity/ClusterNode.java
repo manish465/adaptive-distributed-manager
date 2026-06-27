@@ -29,6 +29,10 @@ public class ClusterNode {
 
     private Integer memoryMb;
 
+    private Integer availableCpuCores;
+
+    private Integer availableMemoryMb;
+
     @Enumerated(EnumType.STRING)
     private NodeStatus status;
 

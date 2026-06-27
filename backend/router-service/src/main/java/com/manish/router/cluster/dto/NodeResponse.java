@@ -12,6 +12,8 @@ public record NodeResponse(
         String zone,
         Integer cpuCores,
         Integer memoryMb,
+        Integer availableCpuCores,
+        Integer availableMemoryMb,
         NodeStatus status
 ) {
 }
