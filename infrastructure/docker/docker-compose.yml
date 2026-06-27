@@ -3,7 +3,7 @@ name: "adaptive-distributed-manager"
 services:
     postgres:
         image: postgres:17
-
+        container_name: addcp-postgres
         environment:
             POSTGRES_DB: addcp
             POSTGRES_USER: addcp
@@ -13,7 +13,6 @@ services:
             - "5432:5432"
         volumes:
             - postgres_data:/var/lib/postgresql/data
-        restart: always
 
 volumes:
     postgres_data:

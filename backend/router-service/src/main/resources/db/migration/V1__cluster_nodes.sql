@@ -1,11 +1,18 @@
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
 CREATE TABLE cluster_nodes (
-       id UUID PRIMARY KEY,
-       node_name VARCHAR(100) UNIQUE,
-       host VARCHAR(255),
-       port INTEGER,
-       status VARCHAR(30),
-       cpu_cores INTEGER,
-       memory_mb BIGINT,
-       created_at TIMESTAMP,
-       updated_at TIMESTAMP
+   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+   hostname VARCHAR(100) NOT NULL,
+   address VARCHAR(100) NOT NULL,
+
+   rack VARCHAR(50),
+   zone VARCHAR(50),
+
+   cpu_cores INTEGER NOT NULL,
+   memory_mb INTEGER NOT NULL,
+
+   status VARCHAR(30) NOT NULL,
+
+   created_at TIMESTAMP NOT NULL,
+   updated_at TIMESTAMP NOT NULL
 );

@@ -6,11 +6,12 @@ import java.util.UUID;
 
 public record NodeResponse(
         UUID id,
-        String nodeName,
-        String host,
-        Integer port,
-        NodeStatus status,
+        String hostname,
+        String address,
+        String rack,
+        String zone,
         Integer cpuCores,
-        Long memoryMb
+        Integer memoryMb,
+        NodeStatus status
 ) {
 }

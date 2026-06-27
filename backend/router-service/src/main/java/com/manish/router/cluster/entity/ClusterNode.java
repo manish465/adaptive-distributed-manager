@@ -17,34 +17,22 @@ public class ClusterNode {
     @Id
     private UUID id;
 
-    @Column(nullable = false, unique = true)
-    private String nodeName;
+    private String hostname;
 
-    @Column(nullable = false)
-    private String host;
+    private String address;
 
-    @Column(nullable = false)
-    private Integer port;
+    private String rack;
+
+    private String zone;
+
+    private Integer cpuCores;
+
+    private Integer memoryMb;
 
     @Enumerated(EnumType.STRING)
     private NodeStatus status;
 
-    private Integer cpuCores;
-
-    private Long memoryMb;
-
     private Instant createdAt;
 
     private Instant updatedAt;
-
-    @PrePersist
-    public void prePersist() {
-        createdAt = Instant.now();
-        updatedAt = Instant.now();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        updatedAt = Instant.now();
-    }
 }
