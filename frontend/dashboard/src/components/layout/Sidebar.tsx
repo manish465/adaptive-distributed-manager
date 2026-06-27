@@ -24,6 +24,10 @@ export default function Sidebar() {
                     <FaProjectDiagram />
                     Topology
                 </NavLink>
+                <NavLink to="/worker" className={itemClass}>
+                    <FaProjectDiagram />
+                    Worker
+                </NavLink>
             </nav>
         </aside>
     );

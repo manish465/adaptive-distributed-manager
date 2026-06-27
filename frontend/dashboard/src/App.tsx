@@ -4,6 +4,7 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 import DashboardPage from "./pages/DashboardPage";
 import NodesPage from "./pages/NodesPage";
 import TopologyPage from "./pages/TopologyPage";
+import WorkersPage from "./pages/WorkersPage";
 
 export default function App() {
     return (
@@ -13,6 +14,7 @@ export default function App() {
                     <Route path="/" element={<DashboardPage />} />
                     <Route path="/nodes" element={<NodesPage />} />
                     <Route path="/topology" element={<TopologyPage />} />
+                    <Route path="/worker" element={<WorkersPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
